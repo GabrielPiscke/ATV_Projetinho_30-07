@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Produto - TechNova</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/forms.css" />
+  <link rel="stylesheet" href="assets/css/edit-product.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <img src="assets/images/logo.jpg" alt="TechNova Logo" class="logo" />
+      <h1>Editar Produto</h1>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="products.html">Produtos</a></li>
+        <li><a href="add-product.html">Adicionar Produto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="product-layout">
+      <!-- Imagem -->
+      <!-- Imagens do Produto -->
+      <div class="image-side">
+        <div class="images-gallery" id="images-gallery"></div>
+
+        <br>
+        <hr />
+
+        <div class="form-group">
+          <label for="new-image-url">Adicionar nova imagem (URL)</label>
+          <input type="url" id="new-image-url" placeholder="https://exemplo.com/imagem.jpg" />
+          <button type="button" class="btn btn-add" onclick="adicionarImagem()">Adicionar Imagem</button>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <section class="form-wrapper">
+        <form id="edit-product-form">
+          <div class="form-group">
+            <label for="product-name">Nome do Produto</label>
+            <input type="text" id="product-name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="product-description">Descrição</label>
+            <textarea id="product-description" rows="4" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="product-price">Preço (R$)</label>
+            <input type="number" id="product-price" step="0.01" min="0" required />
+          </div>
+
+          <div class="form-group">
+            <label for="product-quantity">Quantidade em Estoque</label>
+            <input type="number" id="product-quantity" min="0" required />
+          </div>
+
+          <div class="form-group">
+            <label for="product-color">Cor</label>
+            <input type="text" id="product-color" />
+          </div>
+
+          <div class="form-group">
+            <label for="product-brand">Fabricante</label>
+            <input type="text" id="product-brand" />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            <button type="reset" class="btn btn-secondary">Cancelar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 TechNova - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/edit-product.js"></script>
+
+</body>
+</html>
