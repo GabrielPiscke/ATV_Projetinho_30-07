@@ -1,11 +1,11 @@
-package com.TechNova.Back.service;
+package com.TechNova.Back.Service;
 
 
 import com.TechNova.Back.DTO.ProdutoDTO;
-import com.TechNova.Back.entity.ImagemProduto;
-import com.TechNova.Back.entity.Produto;
-import com.TechNova.Back.repository.ImagemProdutoRepository;
-import com.TechNova.Back.repository.ProdutoRepository;
+import com.TechNova.Back.Entity.ImagemProduto;
+import com.TechNova.Back.Entity.Produto;
+import com.TechNova.Back.Repository.ImagemProdutoRepository;
+import com.TechNova.Back.Repository.ProdutoRepository;
 
 
 import jakarta.persistence.EntityNotFoundException;
@@ -110,20 +110,6 @@ public class ProdutoService {
         produtoRepository.save(produto);
     }
 
-    public void salvarImagemUpload(Integer produtoId, MultipartFile imagem) throws IOException {
-        Produto produto = produtoRepository.findById(produtoId)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
-
-        // Supondo que você salve imagens como URL em banco
-        String caminhoSalvo = armazenamentoService.salvar(imagem); // você deve implementar isso
-
-        ImagemProduto foto = new ImagemProduto();
-        foto.setProduto(produto);
-        foto.setUrlImagem(caminhoSalvo);
-        imagemProdutoRepository.save(foto);
-    }
-
-
     @Transactional
     public void removerTodasFotos(Integer produtoId) {
         Produto produto = produtoRepository.findById(produtoId)
@@ -131,8 +117,6 @@ public class ProdutoService {
 
         imagemProdutoRepository.deleteByProduto(produto);
     }
-
-
 
     private void mapDtoToEntity(ProdutoDTO dto, Produto produto) {
         produto.setNome(dto.getNome());

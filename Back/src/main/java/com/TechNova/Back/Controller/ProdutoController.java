@@ -1,13 +1,14 @@
-package com.TechNova.Back.controller;
+package com.TechNova.Back.Controller;
 
 
 
 import com.TechNova.Back.DTO.FotoDTO;
 import com.TechNova.Back.DTO.ProdutoDTO;
-import com.TechNova.Back.service.ProdutoService;
+import com.TechNova.Back.Service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -53,17 +54,6 @@ public class ProdutoController {
     public ResponseEntity<Void> removerTodasFotos(@PathVariable Integer id) {
         produtoService.removerTodasFotos(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @PostMapping("/{id}/fotos/upload")
-    public ResponseEntity<Void> uploadImagem(@PathVariable Integer id, @RequestParam("imagem") MultipartFile imagem) {
-        try {
-            produtoService.salvarImagemUpload(id, imagem);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(500).build();
-        }
     }
 
     @PutMapping("/{id}")

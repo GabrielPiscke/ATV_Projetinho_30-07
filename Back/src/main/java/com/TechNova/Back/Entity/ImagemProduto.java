@@ -1,4 +1,4 @@
-package com.TechNova.Back.entity;
+package com.TechNova.Back.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
